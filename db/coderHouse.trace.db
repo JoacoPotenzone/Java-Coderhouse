@@ -1,0 +1,64 @@
+2023-05-09 20:37:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 20:38:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 20:41:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 20:43:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 20:51:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 21:09:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-09 21:10:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-16 02:34:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-16 03:23:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "client" ya existe
+Table "client" already exists; SQL statement:
+CREATE TABLE client( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(75) NOT NULL, lastname VARCHAR(75) NOT NULL, docnumber VARCHAR(11) UNIQUE NOT NULL ) [42101-214]
+2023-05-16 03:52:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM product \000d\000aUPDATE [*]product set id=1 where id=11"
+Syntax error in SQL statement "SELECT * FROM product \000d\000aUPDATE [*]product set id=1 where id=11"; SQL statement:
+SELECT * FROM product 
+UPDATE product set id=1 where id=11 [42000-214]
+2023-05-16 03:52:55 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT id FROM product \000d\000aUPDATE [*]product set id=1 where id=11"
+Syntax error in SQL statement "SELECT id FROM product \000d\000aUPDATE [*]product set id=1 where id=11"; SQL statement:
+SELECT id FROM product 
+UPDATE product set id=1 where id=11 [42000-214]
+2023-05-16 03:53:18 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT id FROM product \000d\000aUPDATE [*]product SET id=1 WHERE id=11"
+Syntax error in SQL statement "SELECT id FROM product \000d\000aUPDATE [*]product SET id=1 WHERE id=11"; SQL statement:
+SELECT id FROM product 
+UPDATE product SET id=1 WHERE id=11 [42000-214]
+2023-05-16 03:54:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT id FROM product \000d\000aDELETE [*]product WHERE id=1"
+Syntax error in SQL statement "SELECT id FROM product \000d\000aDELETE [*]product WHERE id=1"; SQL statement:
+SELECT id FROM product 
+DELETE product WHERE id=1 [42000-214]
+2023-05-16 04:34:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM product [*]and cliente"
+Syntax error in SQL statement "SELECT * FROM product [*]and cliente"; SQL statement:
+SELECT * FROM product and cliente [42000-214]
+2023-05-16 04:34:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM product [*]AND cliente"
+Syntax error in SQL statement "SELECT * FROM product [*]AND cliente"; SQL statement:
+SELECT * FROM product AND cliente [42000-214]
