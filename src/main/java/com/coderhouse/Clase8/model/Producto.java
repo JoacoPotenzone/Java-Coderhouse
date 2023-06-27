@@ -1,6 +1,7 @@
 package com.coderhouse.Clase8.model;
 import jakarta.persistence.*;
 
+import java.util.List;
 
 @Entity
 @Table(name ="product")
@@ -10,13 +11,16 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String description;
+    private String descripcion;
 
-    private String code;
+    private String codigo;
 
-    private double price;
+    private double precio;
 
     private int stock;
+
+    @OneToMany(mappedBy = "product")
+    private List<InvoiceDetail> invoiceDetail;
 
     public int getId() {
         return id;
@@ -27,27 +31,27 @@ public class Producto {
     }
 
     public String getDescription() {
-        return description;
+        return descripcion;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.descripcion = description;
     }
 
     public String getCode() {
-        return code;
+        return codigo;
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.codigo = code;
     }
 
     public double getPrice() {
-        return price;
+        return precio;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.precio = price;
     }
 
     public int getStock() {
@@ -62,9 +66,9 @@ public class Producto {
     public String toString() {
         return "Producto{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
-                ", code='" + code + '\'' +
-                ", price=" + price +
+                ", description='" + descripcion + '\'' +
+                ", code='" + codigo + '\'' +
+                ", price=" + precio +
                 ", stock=" + stock +
                 '}';
     }

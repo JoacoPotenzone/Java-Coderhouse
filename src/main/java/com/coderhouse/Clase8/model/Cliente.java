@@ -1,6 +1,8 @@
 package com.coderhouse.Clase8.model;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="client")
 public class Cliente {
@@ -8,12 +10,10 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
     private String lastname;
-
     private int docnumber;
+
 
     public int getId() {
         return id;

@@ -12,3 +12,18 @@ CREATE TABLE product(
     stock INTEGER,
     price DOUBLE
 );
+
+CREATE TABLE factura(
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_client INTEGER FOREIGN KEY AUTO_INCREMENT,
+    total INTEGER,
+    fecha DATE
+);
+
+CREATE TABLE detalle_factura(
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_factura INTEGER FOREIGN KEY AUTO_INCREMENT,
+    id_producto INTEGER FOREIGN KEY AUTO_INCREMENT,
+    cantidad INTEGER,
+    precio DOUBLE
+)

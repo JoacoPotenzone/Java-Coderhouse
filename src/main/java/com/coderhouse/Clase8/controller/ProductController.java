@@ -51,6 +51,37 @@ public class ProductController {
                     null
             );
         }
-
+    }
+    @PutMapping(path = "{id}")
+    public ResponseEntity<Object> putProduct(@PathVariable() int id, @RequestBody Producto product) {
+        try {
+            System.out.println(id);
+            Producto productUpdated = productService.putProducto(id, product);
+            return ResponseHandler.generateResponse(
+                    "Data retrieved successfully",
+                    HttpStatus.OK,
+                    productUpdated);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(
+                    e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    null);
+        }
+    }
+    @DeleteMapping(path = "{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable() int id) {
+        try {
+            System.out.println(id);
+            Producto productDeleted = productService.deleteProducto(id);
+            return ResponseHandler.generateResponse(
+                    "Data retrieved successfully",
+                    HttpStatus.OK,
+                    productDeleted);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(
+                    e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    null);
+        }
     }
 }
