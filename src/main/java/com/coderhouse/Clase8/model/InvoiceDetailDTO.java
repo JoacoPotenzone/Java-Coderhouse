@@ -6,11 +6,22 @@ public class InvoiceDetailDTO {
     private double precio;
     private int cantidad;
 
-    public InvoiceDetailDTO(String descripcion, String codigo, double precio, int cantidad) {
+    private String titulo;
+
+    public InvoiceDetailDTO(String titulo, String descripcion, String codigo, double precio, int cantidad) {
+        this.titulo = titulo;
         this.descripcion = descripcion;
         this.codigo = codigo;
         this.precio = precio;
         this.cantidad = cantidad;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {

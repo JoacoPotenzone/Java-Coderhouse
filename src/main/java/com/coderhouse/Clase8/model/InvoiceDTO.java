@@ -17,7 +17,10 @@ public class InvoiceDTO {
         this.fecha = fecha;
     }
 
-    public InvoiceDTO(int id, java.sql.Date fecha, int total) {
+    public InvoiceDTO(int id_invoice, java.sql.Date fecha, int total) {
+        this.id_invoice = id_invoice;
+        this.fecha = fecha;
+        this.total = total;
     }
 
     public int getId_invoice() {

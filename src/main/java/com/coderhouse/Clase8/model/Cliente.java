@@ -1,8 +1,6 @@
 package com.coderhouse.Clase8.model;
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name="client")
 public class Cliente {
@@ -12,7 +10,7 @@ public class Cliente {
     private int id;
     private String name;
     private String lastname;
-    private int docnumber;
+    private String docnumber;
 
 
     public int getId() {
@@ -39,11 +37,11 @@ public class Cliente {
         this.lastname = lastname;
     }
 
-    public int getDocnumber() {
+    public String getDocnumber() {
         return docnumber;
     }
 
-    public void setDocnumber(int docnumber) {
+    public void setDocnumber(String docnumber) {
         this.docnumber = docnumber;
     }
 
@@ -55,5 +53,21 @@ public class Cliente {
                 ", lastname='" + lastname + '\'' +
                 ", docnumber=" + docnumber +
                 '}';
+    }
+    public void clienteValidado(String name, String surname, String docNumber) throws IllegalArgumentException {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("No puede estar vacío");
+        }
+        if (surname == null || surname.isEmpty()) {
+            throw new IllegalArgumentException("No puede estar vacío");
+        }
+        try {
+            Integer.parseInt(docNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("El documento debe ser un numero");
+        }
+        this.name = name;
+        this.lastname = surname;
+        this.docnumber = docNumber;
     }
 }

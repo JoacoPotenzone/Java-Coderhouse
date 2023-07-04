@@ -15,8 +15,6 @@ public class InvoiceService {
     @Autowired
     private InvoiceRepository invoiceRepository;
     @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
     private ProductService productService;
     @Autowired
     private InvoiceDetailService invoiceDetailService;
@@ -26,13 +24,26 @@ public class InvoiceService {
     public InvoiceDTO postInvoice(InvoiceRequest requestInvoice) throws Exception {
 
         Cliente clientExist = clientService.getClient(requestInvoice.getIdCliente());
+        if (clientExist == null){
+            throw new Exception("Cliente no existe");
+        }
 
-        List<Producto> productList = productService.getProductById(requestInvoice.getListaProducto());
+        List<Producto> listaProducto = productService.getProductById(requestInvoice.getListaProducto());
+        if (listaProducto.size() != requestInvoice.getListaProducto().size()){
+            throw new Exception("No existen los productos");
+        }
+        for (int i = 0; i < listaProducto.size(); i++) {
+            Producto product = listaProducto.get(i);
+            int requestedQuantity = requestInvoice.getListaProducto().get(i).getCantidad();
+            if (requestedQuantity > product.getStock()) {
+                throw new Exception("Stock insuficiente de producto: " + product.getTitulo());
+            }
+        }
 
         double total = 0;
         int i = 0;
-        for (Producto product : productList) {
-            total += product.getPrice() * requestInvoice.getListaProducto().get(i).getCantidad();
+        for (Producto product : listaProducto) {
+            total += product.getPrecio() * requestInvoice.getListaProducto().get(i).getCantidad();
             i++;
         }
 
@@ -48,9 +59,9 @@ public class InvoiceService {
 
 
         i = 0;
-        for (Producto productForDetail : productList) {
+        for (Producto productForDetail : listaProducto) {
             InvoiceDetail newInvoice = new InvoiceDetail();
-            newInvoice.setPrecio(productForDetail.getPrice());
+            newInvoice.setPrecio(productForDetail.getPrecio());
             newInvoice.setInvoice(invoiceCreated);
             newInvoice.setProduct(productForDetail);
             newInvoice.setCantidad(requestInvoice.getListaProducto().get(i).getCantidad());
@@ -72,10 +83,10 @@ public class InvoiceService {
     public DetailsDTO getInvoiceById(int invoice_id) throws Exception {
         Optional<Invoice> invoiceFound = invoiceRepository.findById(invoice_id);
         if (invoiceFound.isEmpty()) {
-            throw new Exception("Invoice no encontrado");
+            throw new Exception("Factura no encontrada");
         }
 
-        List<InvoiceDetailDTO> invoiceDetail = invoiceDetailService.getInvoiceDetailByInvoiceId(invoice_id);
+        List<InvoiceDetailDTO> invoiceDetail = invoiceDetailService.getInvoiceDetailsByInvoiceId(invoice_id);
 
         return new DetailsDTO(
                 invoiceFound.get().getId(),

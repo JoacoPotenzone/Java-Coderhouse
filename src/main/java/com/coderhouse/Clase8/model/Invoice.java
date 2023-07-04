@@ -24,16 +24,14 @@ public class Invoice {
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceDetail> invoiceDetail;
 
-    public Invoice(int id, Cliente cliente, int total, Date fecha) {
+
+    public Invoice() {
         this.id = id;
         this.cliente = cliente;
         this.total = total;
         this.fecha = fecha;
     }
 
-    public Invoice() {
-
-    }
 
     public int getId() {
 

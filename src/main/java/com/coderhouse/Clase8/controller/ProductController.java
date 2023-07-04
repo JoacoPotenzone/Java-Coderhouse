@@ -17,12 +17,12 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Object> postProduct (@RequestBody Producto product){
+    public ResponseEntity<Object> postProduct(@RequestBody Producto product){
         try{
             System.out.println(product);
             Producto productSaved = productService.postProduct(product);
             return ResponseHandler.generateResponse(
-                    "Product stored successfully",
+                    "Producto guardado exitosamente",
                     HttpStatus.OK,
                     productSaved
             );
@@ -38,11 +38,14 @@ public class ProductController {
     @GetMapping(path = "{id}")
     public ResponseEntity<Object> getProduct (@PathVariable int id){
         try{
-            System.out.println(id);
+            System.out.println("Product ID: " + id);
+            Producto productFound = productService.getProduct(id);
+            System.out.println("PRODUCT FOUND");
+            System.out.println(productFound);
             return ResponseHandler.generateResponse(
-                    "Product was got successfully",
+                    "El producto fue obtenido exitosamente",
                     HttpStatus.OK,
-                    null
+                    productFound
             );
         } catch (Exception e){
             return ResponseHandler.generateResponse(
@@ -52,13 +55,28 @@ public class ProductController {
             );
         }
     }
+
+    @GetMapping
+    public ResponseEntity<Object> getTodoProductos() {
+        try {
+            return ResponseHandler.generateResponse(
+                    "Todos los productos obtenidos exitosamente",
+                    HttpStatus.OK,
+                    productService.getTodoProductos());
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(
+                    e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    null);
+        }
+    }
     @PutMapping(path = "{id}")
     public ResponseEntity<Object> putProduct(@PathVariable() int id, @RequestBody Producto product) {
         try {
             System.out.println(id);
             Producto productUpdated = productService.putProducto(id, product);
             return ResponseHandler.generateResponse(
-                    "Data retrieved successfully",
+                    "Producto actualizado exitosamente",
                     HttpStatus.OK,
                     productUpdated);
         } catch (Exception e) {
@@ -72,9 +90,9 @@ public class ProductController {
     public ResponseEntity<Object> deleteProduct(@PathVariable() int id) {
         try {
             System.out.println(id);
-            Producto productDeleted = productService.deleteProducto(id);
+            Producto productDeleted = productService.deleteProduct(id);
             return ResponseHandler.generateResponse(
-                    "Data retrieved successfully",
+                    "Producto borrado exitosamente.",
                     HttpStatus.OK,
                     productDeleted);
         } catch (Exception e) {

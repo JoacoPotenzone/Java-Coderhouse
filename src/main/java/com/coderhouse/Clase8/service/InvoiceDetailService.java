@@ -17,7 +17,8 @@ public class InvoiceDetailService {
         invoiceDetailRepository.save(invoiceDetail);
     }
 
-    public List<InvoiceDetailDTO> getInvoiceDetailByInvoiceId (int invoice_id) throws Exception {
-        return invoiceDetailRepository.getInvoiceDetailByInvoiceId(invoice_id);
+    public List<InvoiceDetailDTO> getInvoiceDetailsByInvoiceId(int id_invoice) throws Exception {
+        System.out.println(invoiceDetailRepository.getInvoiceDetailByInvoiceId(id_invoice));
+        return invoiceDetailRepository.getInvoiceDetailByInvoiceId(id_invoice);
     }
 }

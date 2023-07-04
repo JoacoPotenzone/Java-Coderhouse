@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "7d75be68-21d3-46d9-8b52-c7593c478f6a",
+		"name": "JoaquinPotenzone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27458418",
+		"_collection_link": "https://speeding-rocket-992812.postman.co/workspace/Curso-Java-Inicial~f452cf93-2085-43aa-b311-6d3ea4ff5200/collection/27458418-7d75be68-21d3-46d9-8b52-c7593c478f6a?action=share&creator=27458418&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"El Mago\",\r\n    \"lastname\" : \"Riquelme\",\r\n    \"docnumber\" : 24061980\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/client",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cliente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/client/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Martin\",\r\n    \"lastname\": \"Palermo\",\r\n    \"docnumber\": 7762039\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/client/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/client/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Producto",
+			"item": [
+				{
+					"name": "Crear Producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"titulo\": \"Dark Souls 3\",\r\n    \"descripcion\": \"Juego para PS4\",\r\n    \"codigo\": \"DkS_game\",\r\n    \"precio\": 5000,\r\n    \"stock\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todo producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Bloodborne\",\r\n    \"descripcion\": \"Juego para Xbox\",\r\n    \"codigo\": \"Bld_game\",\r\n    \"precio\": 3000,\r\n    \"stock\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Factura",
+			"item": [
+				{
+					"name": "Crear Factura",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8888"
+		}
+	]
+}

@@ -35,13 +35,14 @@ public class ClientController {
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity<Object> getClient (@PathVariable int id){
+    public ResponseEntity<Object> getClient (@PathVariable() int id){
         try{
             System.out.println(id);
+            Cliente clientFound = clientService.getClient(id);
             return ResponseHandler.generateResponse(
                     "Cliente fue obtenido con exito",
                     HttpStatus.OK,
-                    null
+                    clientFound
             );
         }catch (Exception e) {
             return ResponseHandler.generateResponse(
@@ -52,7 +53,7 @@ public class ClientController {
         }
     }
     @PutMapping(path = "{id}")
-    public ResponseEntity<Object> putClient(@PathVariable() int id, @RequestBody Cliente client) {
+    public ResponseEntity<Object> putCliente(@PathVariable() int id, @RequestBody Cliente client) {
         try {
             System.out.println(id);
             Cliente clientUpdated = clientService.putCliente(id, client);
@@ -73,7 +74,7 @@ public class ClientController {
             System.out.println(id);
             clientService.deleteCliente(id);
             return ResponseHandler.generateResponse(
-                    "Client deleted successfully",
+                    "Cliente borrado exitosamente",
                     HttpStatus.OK,
                     null);
         } catch (Exception e) {

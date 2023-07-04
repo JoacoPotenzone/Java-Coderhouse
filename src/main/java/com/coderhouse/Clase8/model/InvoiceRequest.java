@@ -3,9 +3,9 @@ import java.util.List;
 
 public class InvoiceRequest {
     private int idCliente;
-    private List<RequestProducto> listaProducto;
+    private List<ProductoDetails> listaProducto;
 
-    public InvoiceRequest(int idCliente, List<RequestProducto> listaProducto) {
+    public InvoiceRequest(int idCliente, List<ProductoDetails> listaProducto) {
         this.idCliente = idCliente;
         this.listaProducto = listaProducto;
     }
@@ -18,11 +18,11 @@ public class InvoiceRequest {
         this.idCliente = idCliente;
     }
 
-    public List<RequestProducto> getListaProducto() {
+    public List<ProductoDetails> getListaProducto() {
         return listaProducto;
     }
 
-    public void setListaProducto(List<RequestProducto> listaProducto) {
+    public void setListaProducto(List<ProductoDetails> listaProducto) {
         this.listaProducto = listaProducto;
     }
 }

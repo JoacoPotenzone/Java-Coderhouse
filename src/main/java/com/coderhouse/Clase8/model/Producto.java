@@ -5,12 +5,13 @@ import java.util.List;
 
 @Entity
 @Table(name ="product")
-public class Producto {
+public class Producto{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String titulo;
     private String descripcion;
 
     private String codigo;
@@ -19,8 +20,6 @@ public class Producto {
 
     private int stock;
 
-    @OneToMany(mappedBy = "product")
-    private List<InvoiceDetail> invoiceDetail;
 
     public int getId() {
         return id;
@@ -30,31 +29,39 @@ public class Producto {
         this.id = id;
     }
 
-    public String getDescription() {
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescription(String description) {
-        this.descripcion = description;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getCode() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCode(String code) {
-        this.codigo = code;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public double getPrice() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrice(double price) {
-        this.precio = price;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
@@ -66,10 +73,39 @@ public class Producto {
     public String toString() {
         return "Producto{" +
                 "id=" + id +
-                ", description='" + descripcion + '\'' +
-                ", code='" + codigo + '\'' +
-                ", price=" + precio +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", codigo='" + codigo + '\'' +
+                ", precio=" + precio +
                 ", stock=" + stock +
                 '}';
+    }
+
+    public void productoValidado(String title, String description, int stock, double price, String code)
+            throws IllegalArgumentException {
+        if (title == null || title.isEmpty()) {
+            throw new IllegalArgumentException("Titulo no puedo estar vacío");
+        }
+        if (description == null || description.isEmpty()) {
+            throw new IllegalArgumentException("Descripcion no puede estar vacío");
+        }
+        if (code == null || code.isEmpty()) {
+            throw new IllegalArgumentException("Codigo no puede estar vacío");
+        }
+        try {
+            Integer.parseInt(String.valueOf(stock));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Stock tiene que ser un número");
+        }
+        try {
+            Double.parseDouble(String.valueOf(price));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Precio tiene que ser un número");
+        }
+        this.titulo = title;
+        this.descripcion = description;
+        this.stock = stock;
+        this.precio = price;
+        this.codigo = code;
     }
 }
