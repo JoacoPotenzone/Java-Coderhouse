@@ -16,20 +16,26 @@ public class Invoice {
     @JoinColumn(name="id_client")
     private Cliente cliente;
 
-    private int total;
-
-    private Date fecha;
-
-
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceDetail> invoiceDetail;
 
+    private String fecha;
+    private int total;
 
-    public Invoice() {
+
+
+
+
+
+    public Invoice(int id, String fecha, int total) {
         this.id = id;
         this.cliente = cliente;
         this.total = total;
         this.fecha = fecha;
+    }
+
+    public Invoice() {
+
     }
 
 
@@ -61,11 +67,11 @@ public class Invoice {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -83,8 +89,8 @@ public class Invoice {
         return "Invoice{" +
                 "id=" + id +
                 ", cliente=" + cliente +
-                ", total=" + total +
                 ", fecha=" + fecha +
+                ", total=" + total +
                 '}';
     }
 }

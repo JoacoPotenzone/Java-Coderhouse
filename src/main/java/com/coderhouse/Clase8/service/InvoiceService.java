@@ -1,7 +1,6 @@
 package com.coderhouse.Clase8.service;
 
 import com.coderhouse.Clase8.model.*;
-import com.coderhouse.Clase8.repository.ClientRepository;
 import com.coderhouse.Clase8.repository.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +26,10 @@ public class InvoiceService {
         if (clientExist == null){
             throw new Exception("Cliente no existe");
         }
-
-        List<Producto> listaProducto = productService.getProductById(requestInvoice.getListaProducto());
+        List<Producto> listaProducto = productService.getIdProducto(requestInvoice.getListaProducto());
+        if (listaProducto == null){
+            throw new Exception("No existe la lista Producto");
+        }
         if (listaProducto.size() != requestInvoice.getListaProducto().size()){
             throw new Exception("No existen los productos");
         }
@@ -49,7 +50,7 @@ public class InvoiceService {
 
         Invoice invoiceCreated = new Invoice();
 
-        invoiceCreated.setFecha(java.sql.Date.valueOf(new Date().toString()));
+        invoiceCreated.setFecha(new Date().toString());
 
         invoiceCreated.setCliente(clientExist);
 
@@ -66,6 +67,9 @@ public class InvoiceService {
             newInvoice.setProduct(productForDetail);
             newInvoice.setCantidad(requestInvoice.getListaProducto().get(i).getCantidad());
             invoiceDetailService.saveInvoiceDetail(newInvoice);
+            productForDetail.setStock(productForDetail.getStock() - requestInvoice.getListaProducto().get(i).getCantidad());
+            productService.saveProducto(productForDetail);
+
             i++;
         }
 

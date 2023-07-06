@@ -16,15 +16,18 @@ CREATE TABLE product(
 
 CREATE TABLE factura(
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    id_client INTEGER FOREIGN KEY AUTO_INCREMENT,
+    id_client INT,
+    fecha VARCHAR(255),
     total INTEGER,
-    fecha DATE
+    FOREIGN KEY (id_client) REFERENCES client (id)
 );
 
 CREATE TABLE detalle_factura(
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    id_factura INTEGER FOREIGN KEY AUTO_INCREMENT,
-    id_producto INTEGER FOREIGN KEY AUTO_INCREMENT,
+    id_factura INT NOT NULL,
+    id_producto INT NOT NULL,
     cantidad INTEGER,
     precio DOUBLE
+    FOREIGN KEY (id_factura) REFERENCES factura(id)
+    FOREIGN KEY (id_producto) REFERENCES product(id)
 )

@@ -1,7 +1,6 @@
 package com.coderhouse.Clase8.service;
 
 import com.coderhouse.Clase8.model.Producto;
-import com.coderhouse.Clase8.model.ProductoDetails;
 import com.coderhouse.Clase8.model.RequestProducto;
 import com.coderhouse.Clase8.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +29,17 @@ public class ProductService {
     public Producto getProduct(int id) throws Exception {
         Optional<Producto> producto = productRepository.findById(id);
         if (producto.isEmpty()) {
-            return null;
+            throw new Exception("Producto con id:" + id + ", no encontrado");
         } else {
             return producto.get();
         }
     }
-    public List<Producto> getProductById(List<ProductoDetails> productListId) throws Exception {
+    public List<Producto> getIdProducto(List<RequestProducto> productListId) throws Exception {
         List<Producto> productList = new ArrayList<>();
-        for (ProductoDetails requestProduct : productListId) {
-            Optional<Producto> productFound = productRepository.findById(requestProduct.getProductId());
+        for (RequestProducto requestProduct : productListId) {
+            Optional<Producto> productFound = productRepository.findById(requestProduct.getIdProducto());
             if (productFound.isEmpty()) {
-                throw new Exception("Producto con id: " + requestProduct.getProductId() + " No encontrado.");
+                throw new Exception("Producto con id: " + requestProduct.getIdProducto() + " No encontrado.");
             }
             productList.add(productFound.get());
         }
@@ -96,4 +95,8 @@ public class ProductService {
         productRepository.deleteById(id);
         return product;
 }
+
+    public Producto saveProducto(Producto product) {
+        return productRepository.save(product);
+    }
 }

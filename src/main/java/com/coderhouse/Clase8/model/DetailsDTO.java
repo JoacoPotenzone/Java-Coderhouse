@@ -8,9 +8,9 @@ public class DetailsDTO {
     private double total;
     private List<InvoiceDetailDTO> detalles;
 
-    public DetailsDTO(int id_invoice, Date crear, double total, int id, List<InvoiceDetailDTO> detalles) {
+    public DetailsDTO(int id_invoice, String crear, double total, int id, List<InvoiceDetailDTO> detalles) {
         this.id_invoice = id_invoice;
-        this.crear = String.valueOf(crear);
+        this.crear = crear;
         this.total = total;
         this.detalles = detalles;
     }
@@ -49,7 +49,7 @@ public class DetailsDTO {
 
     @Override
     public String toString() {
-        return "DetailsDTO{" +
+        return "InvoiceDTO{" +
                 "id_invoice=" + id_invoice +
                 ", crear='" + crear + '\'' +
                 ", total=" + total +

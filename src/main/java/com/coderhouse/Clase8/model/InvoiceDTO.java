@@ -4,24 +4,17 @@ import java.util.Date;
 public class InvoiceDTO {
     private int id_invoice;
 
-    private int id_client;
+    private String fecha;
 
     private int total;
 
-    private Date fecha;
 
-    public InvoiceDTO(int id_invoice, int id_client, int total, Date fecha) {
+    public InvoiceDTO(int id_invoice, String fecha, int total) {
         this.id_invoice = id_invoice;
-        this.id_client = id_client;
         this.total = total;
         this.fecha = fecha;
     }
 
-    public InvoiceDTO(int id_invoice, java.sql.Date fecha, int total) {
-        this.id_invoice = id_invoice;
-        this.fecha = fecha;
-        this.total = total;
-    }
 
     public int getId_invoice() {
         return id_invoice;
@@ -29,14 +22,6 @@ public class InvoiceDTO {
 
     public void setId_invoice(int id_invoice) {
         this.id_invoice = id_invoice;
-    }
-
-    public int getId_client() {
-        return id_client;
-    }
-
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
     }
 
     public int getTotal() {
@@ -47,11 +32,20 @@ public class InvoiceDTO {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "InvoiceDTO{" +
+                "id_invoice=" + id_invoice +
+                ", fecha='" + fecha + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

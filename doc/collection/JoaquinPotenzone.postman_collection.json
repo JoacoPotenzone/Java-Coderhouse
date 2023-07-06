@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"El Mago\",\r\n    \"lastname\" : \"Riquelme\",\r\n    \"docnumber\" : 24061980\r\n\r\n}",
+							"raw": "{\r\n    \"name\" : \"Guillermo\",\r\n    \"lastname\" : \"Barros Schelotto\",\r\n    \"docnumber\" : 8340021\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -122,7 +122,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"titulo\": \"Dark Souls 3\",\r\n    \"descripcion\": \"Juego para PS4\",\r\n    \"codigo\": \"DkS_game\",\r\n    \"precio\": 5000,\r\n    \"stock\": 4\r\n}",
+							"raw": "{\r\n\r\n    \"titulo\": \"Mario Bros\",\r\n    \"descripcion\": \"Juego para Nintendo\",\r\n    \"codigo\": \"MBS_game\",\r\n    \"precio\": 2500,\r\n    \"stock\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -194,14 +194,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/1",
+							"raw": "{{url}}/api/product/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -213,14 +213,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/2",
+							"raw": "{{url}}/api/product/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -234,8 +234,66 @@
 				{
 					"name": "Crear Factura",
 					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCliente\": 1,\r\n    \"listaProducto\": [\r\n        {\r\n            \"idProducto\": 2,\r\n            \"cantidad\": 1\r\n        },\r\n        {\r\n            \"idProducto\": 1,\r\n            \"cantidad\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Factura por ID",
+					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/invoice/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener factura con id cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/invoice/getInvoicesByClientId/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"getInvoicesByClientId",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
